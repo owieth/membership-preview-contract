@@ -6,8 +6,8 @@
 
 | Contract      | Network | Contract address |
 | ------------- | ------- | ---------------- |
-| SwissDAOMembership    |  goerli   | https://goerli.etherscan.io/address/0xa05d615ce35beaa61dfe87d05007f2220c3ffecf |
-| SwissDAOMembership    |  sepolia   | https://sepolia.etherscan.io/address/0x1e8A9a06c42621881DCaCFAa6F6e4b5274fe3F5b |
+| SwissDAOMembership    |  goerli   | https://goerli.etherscan.io/address/0x9b10a4de9b1bcdfe0c681024e74e7f3986cc8d2a |
+| SwissDAOMembership    |  sepolia   | https://sepolia.etherscan.io/address/0x5870c3f8FE6605Fb43C8D63Cc31CB2B64cdb0C0E |
 
 ### Deploy contracts
 
