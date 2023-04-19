@@ -22,8 +22,8 @@ contract SwissDAOMembership is
     constructor() ERC721("SwissDAOMembership", "SDM") {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
-        uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
+        uint256 tokenId = _tokenIdCounter.current();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
     }
