@@ -53,12 +53,12 @@ contract SwissDAOMembership is
                                 '{"name":"',
                                 name,
                                 '", "description":"SwissDAO Membership", ',
-                                '"attributes": []',
+                                '"attributes": [], ',
                                 '"image":"',
                                 "https://nudemenft.com/img/1.png",
-                                '"external_url":"',
+                                '", "external_url":"',
                                 url,
-                                '"animation_url":"',
+                                '", "animation_url":"',
                                 url,
                                 '"}'
                             )
