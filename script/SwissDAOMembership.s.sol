@@ -11,7 +11,10 @@ contract SwissDAOMembershipScript is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        new SwissDAOMembership();
+        SwissDAOMembership membership = new SwissDAOMembership(
+            "https://membership-preview.vercel.app/"
+        );
+        membership.safeMint();
 
         vm.stopBroadcast();
     }

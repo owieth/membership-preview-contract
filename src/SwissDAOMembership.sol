@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Base64.sol";
 
 contract SwissDAOMembership is
     ERC721,
@@ -19,13 +20,63 @@ contract SwissDAOMembership is
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("SwissDAOMembership", "SDM") {}
+    string public websiteUrl;
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    constructor(string memory _url) ERC721("SwissDAOMembership", "SDM") {
+        websiteUrl = _url;
+    }
+
+    /// @dev Mint Membership NFT.
+    function safeMint() public onlyOwner {
         _tokenIdCounter.increment();
         uint256 tokenId = _tokenIdCounter.current();
-        _safeMint(to, tokenId);
-        _setTokenURI(tokenId, uri);
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, _tokenURI(msg.sender));
+    }
+
+    /// @dev Render the JSON Metadata for a given Membership NFT.
+    /// @param _holder Address of the holder.
+    function _tokenURI(address _holder) public view returns (string memory) {
+        string memory holder = Strings.toHexString(
+            uint256(uint160(_holder)),
+            20
+        );
+        string memory name = string.concat("Membmership of ", holder);
+        string memory url = string.concat(websiteUrl, holder);
+
+        return
+            string(
+                abi.encodePacked(
+                    Base64.encode(
+                        bytes(
+                            abi.encodePacked(
+                                '{"name":"',
+                                name,
+                                '", "description":"SwissDAO Membership", ',
+                                '"attributes": []',
+                                '"image":"',
+                                "https://nudemenft.com/img/1.png",
+                                '"external_url":"',
+                                url,
+                                '"animation_url":"',
+                                url,
+                                '"}'
+                            )
+                        )
+                    )
+                )
+            );
+    }
+
+    /// @dev Base URI for Metadata.
+    function _baseURI() internal pure override returns (string memory) {
+        return "data:application/json;base64,";
+    }
+
+    /// @dev Update Website URL for displaying membership cards.
+    /// @param _url New Website URL.
+    function setWebsiteUrl(string memory _url) external onlyOwner {
+        websiteUrl = _url;
     }
 
     // The following functions are overrides required by Solidity.
