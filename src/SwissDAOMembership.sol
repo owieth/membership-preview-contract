@@ -41,8 +41,14 @@ contract SwissDAOMembership is
             uint256(uint160(_holder)),
             20
         );
-        string memory name = string.concat("Membmership of ", holder);
+        string memory name = string.concat("Membership of ", holder);
         string memory url = string.concat(websiteUrl, holder);
+        string memory imageUrl = string.concat(
+            websiteUrl,
+            "membercard.svg",
+            "?holder=",
+            holder
+        );
 
         return
             string(
@@ -55,7 +61,7 @@ contract SwissDAOMembership is
                                 '", "description":"SwissDAO Membership", ',
                                 '"attributes": [], ',
                                 '"image":"',
-                                "https://nudemenft.com/img/1.png",
+                                imageUrl,
                                 '", "external_url":"',
                                 url,
                                 '", "animation_url":"',
