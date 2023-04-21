@@ -45,7 +45,7 @@ contract SwissDAOMembership is
         string memory url = string.concat(websiteUrl, holder);
         string memory imageUrl = string.concat(
             websiteUrl,
-            "membercard.svg",
+            "teaser.png",
             "?holder=",
             holder
         );
