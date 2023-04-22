@@ -9,6 +9,11 @@
 | SwissDAOMembership    |  goerli   | https://goerli.etherscan.io/address/0xb414ca4462b2dc146b416554bb14b504eabe0394 |
 | SwissDAOMembership    |  sepolia   | https://sepolia.etherscan.io/address/0xF3e35a345F62e4cd381747fDeF80Ee0B44E3d733 |
 
+Example of NFT on Opensea & Looksrare:
+
+https://testnets.opensea.io/assets/goerli/0xb414ca4462b2dc146b416554bb14b504eabe0394/1
+https://goerli.looksrare.org/collections/0xB414cA4462b2Dc146B416554bB14B504eABE0394
+
 ### Deploy contracts
 
 ```shell
